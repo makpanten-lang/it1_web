@@ -61,7 +61,7 @@ export default function Navbar() {
                         <Link href="/contact">𝐂𝐨𝐧𝐭𝐚𝐜𝐭 ✟</Link>
                     </li>
                     <li>
-                        <Link href="/blogs">𝐁𝐥𝐨𝐠𝐬 ✟</Link>
+                        <Link href="/blogs">𝐀𝐫𝐭𝐢𝐜𝐥𝐞𝐬 ✟</Link>
                     </li>
                     {user && (
                         <li>
