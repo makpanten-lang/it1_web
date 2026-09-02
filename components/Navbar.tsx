@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -36,13 +37,18 @@ export default function Navbar() {
         router.refresh();
     }
 
-
     return (
         <nav className="navbar">
             <div className="nav-container">
 
                 <Link href="/" className="logo">
-                  𝐍𝐎𝐗𝐕𝐀𝐔𝐋𝐓†
+                    <Image
+                        src="/logo_white.png"
+                        alt="NOXVAULT"
+                        width={150}
+                        height={40}
+                        priority
+                    />
                 </Link>
 
                 <button className="menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
@@ -63,6 +69,9 @@ export default function Navbar() {
                     <li>
                         <Link href="/blogs">𝐀𝐫𝐭𝐢𝐜𝐥𝐞𝐬 ✟</Link>
                     </li>
+                    <li>
+                        <Link href="/products">𝐏𝐫𝐨𝐝𝐮𝐜𝐭𝐬 ✟</Link>
+                    </li>
                     {user && (
                         <li>
                             <Link href="/dashboard">𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝 ✟</Link>
@@ -70,17 +79,17 @@ export default function Navbar() {
                     )}
 
                     {user?.role === "admin" && (
-                    <>
-                        <li>
-                            <Link href="/admin/blogs">𝐁𝐥𝐨𝐠 ✟</Link>
-                        </li>
-                        <li>
-                            <Link href="/admin/categories">𝐂𝐚𝐭𝐞𝐠𝐨𝐫𝐢𝐞𝐬 ✟</Link>
-                        </li>
-                        <li>
-                        <Link href="/admin/products">𝐏𝐫𝐨𝐝𝐮𝐜𝐭✟</Link>
-                    </li>
-                    </>
+                        <>
+                            <li>
+                                <Link href="/admin/blogs">𝐁𝐥𝐨𝐠 ✟</Link>
+                            </li>
+                            <li>
+                                <Link href="/admin/categories">𝐂𝐚𝐭𝐞𝐠𝐨𝐫𝐢𝐞𝐬 ✟</Link>
+                            </li>
+                            <li>
+                                <Link href="/admin/products">𝐏𝐫𝐨𝐝𝐮𝐜𝐭✟</Link>
+                            </li>
+                        </>
                     )}
 
                     {!user ? (

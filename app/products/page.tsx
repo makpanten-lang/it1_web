@@ -1,0 +1,67 @@
+import { connectDB } from "@/lib/mongodb";
+import Product from "@/models/Product";
+import ProductCard from "@/components/ProductCard";
+import Category from "@/models/Category";
+
+export const dynamic = "force-dynamic";
+
+export default async function ProductsPage() {
+  await connectDB();
+
+  const products = await Product.find({
+    published: true,
+  })
+    .populate("category", "name slug")
+    .sort({ createdAt: -1 })
+    .lean();
+
+  const serializedProducts = products.map((product) => ({
+    _id: product._id.toString(),
+    name: product.name,
+    description: product.description,
+    price: product.price,
+    stock: product.stock,
+    imageUrl: product.imageUrl,
+    category:
+      product.category &&
+      typeof product.category === "object" &&
+      "name" in product.category
+        ? {
+            _id:
+              "_id" in product.category && product.category._id
+                ? product.category._id.toString()
+                : "",
+            name: String(product.category.name),
+          }
+        : undefined,
+  }));
+
+  return (
+    <main className="mx-auto max-w-7xl p-6">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold">
+          𝐀𝐥𝐥 𝐏𝐫𝐨𝐝𝐮𝐜𝐭𝐬
+        </h1>
+
+        <p className="mt-2 text-gray-600">
+          𝐂𝐡𝐨𝐨𝐬𝐞 𝐚 𝐩𝐫𝐨𝐝𝐮𝐜𝐭
+        </p>
+      </div>
+
+      {serializedProducts.length === 0 ? (
+        <div className="rounded-xl border p-10 text-center">
+          𝐍𝐨 𝐩𝐫𝐨𝐝𝐮𝐜𝐭𝐬 𝐲𝐞𝐭
+        </div>
+      ) : (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {serializedProducts.map((product) => (
+            <ProductCard
+              key={product._id}
+              product={product}
+            />
+          ))}
+        </div>
+      )}
+    </main>
+  );
+}

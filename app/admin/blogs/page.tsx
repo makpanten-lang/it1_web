@@ -26,10 +26,8 @@ export default async function BlogPage() {
   return (
     <main className="mx-auto max-w-6xl space-y-8 px-6 py-10">
       <div>
-        <h1 className="text-3xl font-bold">จัดการบทความ</h1>
-        <p className="mt-2 text-gray-600">
-          เพิ่ม แก้ไข และลบบทความ
-        </p>
+        <h1 className="text-3xl font-bold">𝐌𝐚𝐧𝐚𝐠𝐞 𝐀𝐫𝐭𝐢𝐜𝐥𝐞𝐬</h1>
+        <p className="mt-2 text-gray-600">Add edit and delete articles</p>
       </div>
 
       <BlogForm />
