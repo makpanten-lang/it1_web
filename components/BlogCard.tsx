@@ -31,7 +31,7 @@ function formatDate(date: string) {
         return "";
     }
 
-    return parsedDate.toLocaleDateString("th-TH", {
+    return parsedDate.toLocaleDateString("en-EN", {
         day: "numeric",
         month: "long",
         year: "numeric",

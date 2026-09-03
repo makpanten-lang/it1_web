@@ -47,7 +47,7 @@ export default function AdminBlogList({
 
   async function handleUpdate(id: string) {
     if (!formData.title.trim()) {
-      alert("กรุณาระบุชื่อบทความ");
+      alert("𝐏𝐥𝐞𝐚𝐬𝐞 𝐞𝐧𝐭𝐞𝐫 𝐭𝐡𝐞 𝐚𝐫𝐭𝐢𝐜𝐥𝐞 𝐭𝐢𝐭𝐥𝐞");
       return;
     }
 
@@ -65,7 +65,7 @@ export default function AdminBlogList({
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.message || "แก้ไขบทความไม่สำเร็จ");
+        throw new Error(result.message || "𝐅𝐚𝐢𝐥𝐞𝐝 𝐭𝐨 𝐞𝐝𝐢𝐭 𝐭𝐡𝐞 𝐚𝐫𝐭𝐢𝐜𝐥𝐞");
       }
 
       setBlogs((currentBlogs) =>
@@ -79,7 +79,7 @@ export default function AdminBlogList({
       alert(
         error instanceof Error
           ? error.message
-          : "แก้ไขบทความไม่สำเร็จ",
+          : "𝐅𝐚𝐢𝐥𝐞𝐝 𝐭𝐨 𝐞𝐝𝐢𝐭 𝐭𝐡𝐞 𝐚𝐫𝐭𝐢𝐜𝐥𝐞",
       );
     } finally {
       setIsSaving(false);
@@ -88,7 +88,7 @@ export default function AdminBlogList({
 
   async function handleDelete(id: string) {
     const confirmed = window.confirm(
-      "คุณต้องการลบบทความนี้ใช่หรือไม่?",
+      "𝐀𝐫𝐞 𝐲𝐨𝐮 𝐬𝐮𝐫𝐞 𝐲𝐨𝐮 𝐰𝐚𝐧𝐭 𝐭𝐨 𝐝𝐞𝐥𝐞𝐭𝐞 𝐭𝐡𝐢𝐬 𝐚𝐫𝐭𝐢𝐜𝐥𝐞?",
     );
 
     if (!confirmed) {
@@ -113,7 +113,7 @@ export default function AdminBlogList({
       alert(
         error instanceof Error
           ? error.message
-          : "ลบบทความไม่สำเร็จ",
+          : "𝐅𝐚𝐢𝐥𝐞𝐝 𝐭𝐨 𝐝𝐞𝐥𝐞𝐭𝐞 𝐭𝐡𝐞 𝐚𝐫𝐭𝐢𝐜𝐥𝐞",
       );
     }
   }
@@ -121,7 +121,7 @@ export default function AdminBlogList({
   if (blogs.length === 0) {
     return (
       <div className="rounded-xl border border-dashed p-8 text-center text-gray-500">
-        ยังไม่มีบทความ
+        𝐍𝐨 𝐚𝐫𝐭𝐢𝐜𝐥𝐞𝐬 𝐲𝐞𝐭
       </div>
     );
   }
@@ -146,7 +146,7 @@ export default function AdminBlogList({
                       title: event.target.value,
                     })
                   }
-                  placeholder="ชื่อบทความ"
+                  placeholder="𝐀𝐫𝐭𝐢𝐜𝐥𝐞 𝐭𝐢𝐭𝐥𝐞"
                   className="w-full rounded-lg border px-4 py-2"
                 />
 
@@ -158,7 +158,7 @@ export default function AdminBlogList({
                       slug: event.target.value,
                     })
                   }
-                  placeholder="Slug"
+                  placeholder="𝐒𝐥𝐮𝐠"
                   className="w-full rounded-lg border px-4 py-2"
                 />
 
@@ -170,7 +170,7 @@ export default function AdminBlogList({
                       content: event.target.value,
                     })
                   }
-                  placeholder="เนื้อหา HTML"
+                  placeholder="𝐇𝐓𝐌𝐋 𝐜𝐨𝐧𝐭𝐞𝐧𝐭"
                   rows={10}
                   className="w-full rounded-lg border px-4 py-2"
                 />
@@ -180,17 +180,17 @@ export default function AdminBlogList({
                     type="button"
                     onClick={() => handleUpdate(blog._id)}
                     disabled={isSaving}
-                    className="rounded-lg bg-green-600 px-4 py-2 text-white disabled:opacity-50"
+                    className="rounded-lg bg-black px-4 py-2 text-white hover:bg-gray-800 disabled:opacity-50"
                   >
-                    {isSaving ? "กำลังบันทึก..." : "บันทึก"}
+                    {isSaving ? "𝐒𝐚𝐯𝐢𝐧𝐠..." : "𝐒𝐚𝐯𝐞"}
                   </button>
 
                   <button
                     type="button"
                     onClick={cancelEditing}
-                    className="rounded-lg border px-4 py-2"
+                    className="rounded-lg border border-black bg-white px-4 py-2 text-black hover:bg-gray-100"
                   >
-                    ยกเลิก
+                    𝐂𝐚𝐧𝐜𝐞𝐥
                   </button>
                 </div>
               </div>
@@ -202,17 +202,17 @@ export default function AdminBlogList({
                   <button
                     type="button"
                     onClick={() => startEditing(blog)}
-                    className="rounded-lg bg-blue-600 px-4 py-2 text-white"
+                    className="rounded-lg bg-black px-4 py-2 text-white hover:bg-gray-800"
                   >
-                    แก้ไข
+                    𝐄𝐝𝐢𝐭
                   </button>
 
                   <button
                     type="button"
                     onClick={() => handleDelete(blog._id)}
-                    className="rounded-lg bg-red-600 px-4 py-2 text-white"
+                    className="rounded-lg border border-black bg-white px-4 py-2 text-black hover:bg-gray-100"
                   >
-                    ลบ
+                    𝐃𝐞𝐥𝐞𝐭𝐞
                   </button>
                 </div>
               </>

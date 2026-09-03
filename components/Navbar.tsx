@@ -91,7 +91,13 @@ export default function Navbar() {
                             </li>
                         </>
                     )}
-
+                    {user?.role === "user" && (
+                        <>
+                            <li>
+                                <Link href="/admin/products">𝐏𝐫𝐨𝐝𝐮𝐜𝐭✟</Link>
+                            </li>
+                        </>
+                    )}
                     {!user ? (
                         <>
                             <li>
@@ -103,6 +109,7 @@ export default function Navbar() {
                             <li>
                                 <Link href="/"> 𝐋𝐨𝐠𝐨𝐮𝐭 ✟</Link>
                             </li>
+
                         </>
                     ) : (
                         <>

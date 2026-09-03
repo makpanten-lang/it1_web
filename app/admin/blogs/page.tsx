@@ -27,7 +27,8 @@ export default async function BlogPage() {
     <main className="mx-auto max-w-6xl space-y-8 px-6 py-10">
       <div>
         <h1 className="text-3xl font-bold">𝐌𝐚𝐧𝐚𝐠𝐞 𝐀𝐫𝐭𝐢𝐜𝐥𝐞𝐬</h1>
-        <p className="mt-2 text-gray-600">Add edit and delete articles</p>
+        <p className="mt-2 text-gray-600">
+          𝐀𝐝𝐝 𝐞𝐝𝐢𝐭 𝐚𝐧𝐝 𝐝𝐞𝐥𝐞𝐭𝐞 𝐚𝐫𝐭𝐢𝐜𝐥𝐞𝐬</p>
       </div>
 
       <BlogForm />
